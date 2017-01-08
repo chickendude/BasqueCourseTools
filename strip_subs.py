@@ -22,14 +22,17 @@ def pullSentences(filelist):
 									.replace("â€¦","...")\
 									.replace('Ã±','ñ')\
 									.replace("\x9d","")\
+									.replace("Ã©","é")\
+									.replace("\x8f","è")\
+									.replace("Ã‰","É")\
+									.replace("Ãˆ","È")\
+									.replace("Ã\x81","Á")\
+									.replace("\u014d","o")\
+									.replace("\ufffd","ñ")\
 									.replace("â€œ","\"")\
 									.replace("â€","\"")\
 									.replace("Â","")\
 									.replace("\u266a","")\
-									.replace("\x8f","è")\
-									.replace("Ã\x81","Á")\
-									.replace("\u014d","o")\
-									.replace("\ufffd","ñ")\
 									.replace("\r\n","\n")\
 									.replace("\n"," ") + "\n"
 		print(subtitle_text)
