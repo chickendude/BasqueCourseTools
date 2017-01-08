@@ -9,7 +9,7 @@ import strip_subs
 # make sure all files are utf-8!
 # files ready to be extracted should be placed in the 'out' folder
 def main():
-	path = join("subtitles", "out", "*.srt")
+	path = join("subtitles", "*.srt")
 	filelist = glob(path)
 	strip_subs.pullSentences(filelist)
 	# add in commandline options?
