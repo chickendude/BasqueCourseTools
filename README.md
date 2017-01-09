@@ -1,7 +1,7 @@
 # BasqueCourseTools
 Some Python tools to help process a subtitle corpus and create a language course.
 
-Note that these tools expect your file to be encoded in UTF-8.
+Note that these tools expect your files to be encoded in UTF-8.
 
 ## strip_subs
 *requires [pysrt](https://github.com/byroot/pysrt)*  
