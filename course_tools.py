@@ -1,22 +1,28 @@
-import sys
+import sys,os
 import sqlite3
 from glob import glob
-from os.path import join
 
 import strip_subs
-
+import corpus_funcs
 
 # make sure all files are utf-8!
 # files ready to be extracted should be placed in the 'subtitles' folder
+subtitles_dir = "subtitles"
 def main():
-	path = join("subtitles", "*.srt")
-	filelist = glob(path)
-	strip_subs.pullSentences(filelist)
-	# add in commandline options?
-	# if len(sys.argv) > 1:
-	# 	args = sys.argv[1:]
-	# 	if "..." in args:
-	# 		...
+
+	# command line options
+	if len(sys.argv) > 1:
+		args = sys.argv[1:]
+		if "--strip-subtitles" in args:
+			path = os.path.join(subtitles_dir, "*.srt")
+			filelist = glob(path)
+			strip_subs.pullSentences(filelist)
+		if "--create-frequency" in args:
+			corpus_funcs.createFrequencyDict()
+		if "--combine-corpus" in args:
+			corpus_funcs.combineSentences("out")
+		if "--build-corpus" in args:
+			corpus_funcs.buildCorpus()
 
 
 if __name__ == '__main__':

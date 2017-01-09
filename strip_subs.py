@@ -1,8 +1,10 @@
+# -- coding: utf-8 --
 import pysrt
-import os
+import os,glob
 import re
 
-black_list = ['Euskal Encodings','azpitituluak','euskarazko','fharlock','arkadia','euskal','Jon Mu','AKETek','\u266b',"YIFY","euskaratz","Team Nanban","Ghibli"]
+
+black_list = ['Euskal Encodings','azpitituluak','euskaraz','.com','://','@','fharlock','arkadia','euskal','Jon Mu','AKETek','\u266b',"YIFY","euskaratz","Team Nanban","Ghibli"]
 output_folder = "out"
 
 def pullSentences(filelist):
@@ -10,7 +12,7 @@ def pullSentences(filelist):
 	i = 0
 	for filename in filelist:
 		i += 1
-		print("File " + str(i) + " " + filename)
+		print("Processing: " + str(i) + " " + filename)
 		subtitle = pysrt.open(filename)
 		subtitle_text = ""
 		for line in subtitle:
@@ -22,6 +24,7 @@ def pullSentences(filelist):
 									.replace("â€¦","...")\
 									.replace('Ã±','ñ')\
 									.replace("\x9d","")\
+									.replace("â™ª","")\
 									.replace("Ã©","é")\
 									.replace("\x8f","è")\
 									.replace("Ã‰","É")\
@@ -35,8 +38,6 @@ def pullSentences(filelist):
 									.replace("\u266a","")\
 									.replace("\r\n","\n")\
 									.replace("\n"," ") + "\n"
-		print(subtitle_text)
-		print(filename)
 		filename = str(i) + ".txt"
 		file_path = os.path.join(output_folder,filename)
 		with open(file_path, 'w') as f:
